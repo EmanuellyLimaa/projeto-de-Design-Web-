@@ -1,73 +1,87 @@
-const produtos = {
-rose: {
-nome: "BLUSH ROSÉ",
-preco: "R$ 40,00",
-imagem: "./img/rose.jpg",
-descricao: "Blush em tom rosado suave, ideal para deixar as bochechas com aparência saudável e delicada.",
-tom: "TOM ROSA CLARO",
-acabamento: "ACABAMENTO NATURAL",
-indicacao: "IDEAL PARA O DIA A DIA"
-},
+// iniciando informações do produto 
+class Produtos {
+    constructor(n, desc, prec, img, tom, acab, indi, i) {
+        this.nome = n;
+        this.preco = prec;
+        this.descricao = desc;
+        this.imagem = img;
+        this.tom_produto = tom;
+        this.acamento = acab;
+        this.indicacao = indi;
+        this.id = i;
+    }
 
-pessego: {
-nome: "BLUSH PÊSSEGO",
-preco: "R$ 30,00",
-imagem: "./img/pessego.jpg",
-descricao: "Blush em tom pêssego, perfeito para proporcionar uma aparência saudável e iluminada.",
-tom: "TOM PÊSSEGO",
-acabamento: "ACABAMENTO NATURAL",
-indicacao: "IDEAL PARA UMA MAKE LEVE"
-},
 
-berry: {
-nome: "BLUSH BERRY",
-preco: "R$ 25,00",
-imagem: "./img/Berryy.jpg",
-descricao: "Blush em tom berry, ideal para uma maquiagem com um toque de cor mais intenso.",
-tom: "TOM BERRY",
-acabamento: "ACABAMENTO MARCANTE",
-indicacao: "IDEAL PARA PRODUÇÕES ESPECIAIS"
+    card() {
+        let article = document.createElement("article");
+        article.classList.add("dog-card");
+        article.innerHTML = `
+            <div class="produto-imagem">
+                <img src="./img/${this.imagem}" alt="${this.nome}">
+            </div>
+
+            <span class="numero">0${this.id}</span>
+
+            <h2>${this.nome}</h2>
+
+            <p>${this.tom}</p>
+
+            <strong>${this.preco}</strong>
+
+            <a class="botao" href="detalhes.html?id=${this.id}"> VER PRODUTO </a> 
+        `;
+        return article;
+    }
+
+    detalhe() {
+        return `
+            <div class="produto-detalhe">
+                <div class="detalhe-imagem">
+                    <img src="./img/${this.imagem}">
+                </div>
+                <div class="detalhe-informacoes">
+                    <h2>${this.nome}</h2>
+                    <strong>${this.preco}</strong>
+                    <h3>DESCRIÇÃO</h3>
+                    <p>${this.descricao}</p>
+                    <div class="caracteristicas">
+                        <span>${this.tom}</span>
+                        <span>${this.acabamento}</span>
+                        <span>${this.indicacao}</span>
+                    </div>
+                </div>
+            </div>
+    `
+    }
 }
-};
+// Cadastro dos produtos
 
-// Carregar os detalhes do produto
-function carregarProduto() {
-const parametros = new URLSearchParams(window.location.search);
-const produtoEscolhido = parametros.get("produto");
+const b1 = new Blush("BLUSH ROSÉ",
+    "Blush em tom rosado suave, ideal para deixar as bochechas com aparência saudável e delicada.",
+    "R$ 40,00",
+    "TOM ROSA CLARO",
+    "ACABAMENTO NATURAL",
+    "IDEAL PARA O DIA A DIA",
+    "rose.jpg", 1
+);
 
-const produto = produtos[produtoEscolhido] || produtos.rose;
+const b2 = new Blush("BLUSH PÊSSEGO",
+    "Blush em tom pêssego, perfeito para proporcionar uma aparência saudável e iluminada.",
+    "R$ 27,00",
+    "TOM PÊSSEGO",
+    "ACABAMENTO NATURAL",
+    "IDEAL PARA UMA MAKE LEVE",
+    "pessego.jpg", 2
+);
 
-document.getElementById("nomeProduto").textContent = produto.nome;
-document.getElementById("precoProduto").textContent = produto.preco;
-document.getElementById("imagemProduto").src = produto.imagem;
-document.getElementById("descricaoProduto").textContent = produto.descricao;
-document.getElementById("tomProduto").textContent = produto.tom;
-document.getElementById("acabamentoProduto").textContent = produto.acabamento;
-document.getElementById("indicacaoProduto").textContent = produto.indicacao;
-}
+const b3 = new Blush("BLUSH BERRY",
+    "Blush em tom berry, ideal para uma maquiagem com um toque de cor mais intenso.",
+    "R$ 23,00",
+    "TOM BERRY",
+    "ACABAMENTO MARCANTE",
+    "IDEAL PARA PRODUÇÕES ESPECIAIS",
+    "Berryy.jpg", 3
+);
 
-// Filtrar os produtos
-function filtrarProdutos(tipo, botao) {
-const produtosLista = document.querySelectorAll(".produto");
-
-produtosLista.forEach(function(produto) {
-if (tipo === "todos" || produto.dataset.tipo === tipo) {
-produto.style.display = "block";
-} else {
-produto.style.display = "none";
-}
-});
-
-document.querySelectorAll(".filtro").forEach(function(filtro) {
-filtro.classList.remove("ativo");
-});
-
-botao.classList.add("ativo");
-}
-
-// Executar ao carregar a página
-document.addEventListener("DOMContentLoaded", function() {
-if (document.getElementById("nomeProduto")) {
-carregarProduto();
-}
-});
+// Lista de produtos
+const lista = [b1, b2, b3];
