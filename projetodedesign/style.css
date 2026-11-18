@@ -131,14 +131,6 @@ nav a:hover {
     margin-bottom: 30px;
 }
 
-.categorias-lista {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-}
-
 .categoria {
     background-color: #f3e6df;
     color: #95646a;
@@ -207,7 +199,7 @@ nav a:hover {
     text-align: left;
 }
 
-.produto-imagem {
+.dog-card-imagem {
     height: 230px;
     background-color: #f1e5de;
     overflow: hidden;
@@ -380,4 +372,132 @@ footer {
     .inicio h1 {
         font-size: 38px;
     }
+}
+
+.sobre {
+padding: 65px 10%;
+}
+
+.sobre-conteudo {
+display: grid;
+grid-template-columns: 1fr 1fr;
+align-items: center;
+gap: 50px;
+}
+
+.sobre-texto h1 {
+font-family: Georgia, serif;
+font-size: 45px;
+font-weight: normal;
+color: #9e6269;
+margin-bottom: 25px;
+}
+
+.sobre-texto h2 {
+font-family: Georgia, serif;
+color: #9e6269;
+font-weight: normal;
+margin: 30px 0 15px;
+}
+
+.sobre-texto p:not(.etiqueta) {
+color: #806d65;
+line-height: 1.9;
+margin-bottom: 18px;
+}
+
+.sobre-imagem {
+height: 380px;
+border-radius: 8px;
+overflow: hidden;
+background-color: #f1e5de;
+}
+
+.sobre-imagem img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.sobre-final {
+text-align: center;
+background-color: #fff;
+padding: 55px 20px;
+margin-top: 55px;
+}
+
+.sobre-final h2 {
+font-family: Georgia, serif;
+color: #9e6269;
+font-size: 30px;
+font-weight: normal;
+margin-bottom: 15px;
+}
+
+.sobre-final p {
+color: #a47773;
+font-size: 11px;
+letter-spacing: 2px;
+margin-bottom: 25px;
+}
+
+@media (max-width: 750px) {
+.sobre-conteudo {
+grid-template-columns: 1fr;
+}
+
+.sobre-imagem {
+height: 300px;
+}
+}
+
+.pesquisa-produtos {
+display: flex;
+justify-content: center;
+gap: 10px;
+margin: 30px auto;
+max-width: 450px;
+}
+
+.pesquisa-produtos input {
+flex: 1;
+min-width: 0;
+padding: 14px 18px;
+border: 1px solid #d8b8b2;
+border-radius: 25px;
+outline: none;
+background-color: #fff;
+color: #55423e;
+}
+
+.pesquisa-produtos input:focus {
+border-color: #ad7075;
+}
+
+.pesquisa-produtos button {
+background-color: #ad7075;
+color: white;
+border: none;
+border-radius: 25px;
+padding: 12px 22px;
+cursor: pointer;
+}
+
+.pesquisa-produtos button:hover {
+background-color: #89535b;
+}
+
+.inicio{
+    justify-content: center;
+    text-align: center;
+}
+
+.inicio-texto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagem-inicio{
+    margin: 0 auto;
 }
