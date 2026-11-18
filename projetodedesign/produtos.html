@@ -1,78 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Meu Blush | Produtos </title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header class="cabecalho">
-    <a href="index.html" class="logo"> MEU BLUSH </a>
-    <span class="sublogo"> BEAUTY • MAKEUP </span>
+    <header class="cabecalho">
+        <a href="index.html" class="logo"> MEU BLUSH </a>
+        <span class="sublogo"> BEAUTY • MAKEUP </span>
 
-    <nav>
-        <a href="index.html"> Início </a>
-        <a href="produtos.html"> Produtos </a>
-    </nav>
-</header>
+        <nav>
+            <a href="index.html"> Início </a>
+            <a href="produtos.html"> Produtos </a>
+            <a href="produtos.html"> Sobre Nós </a>
+        </nav>
+    </header>
 
-<main class="catalogo">
-    <p class="etiqueta"> NOSSA COLEÇÃO </p>
-    <h1> Escolha sua cor </h1>
-    <p> Três opções delicadas para completar sua make. </p>
+    <main class="catalogo">
+        <p class="etiqueta"> NOSSA COLEÇÃO </p>
+        <h1> Escolha sua cor </h1>
+        <p> Três opções delicadas para completar sua make. </p>
 
-    <div class="filtros">
-        <button class="filtro ativo" onclick="filtrarProdutos('todos', this)">TODOS</button>
-        <button class="filtro" onclick="filtrarProdutos('po', this)">EM PÓ</button>
-        <button class="filtro" onclick="filtrarProdutos('cremoso', this)">CREMOSO</button>
-    </div>
-
-    <section class="produtos-lista">
-
-        <article class="produto" data-tipo="po">
-            <div class="produto-imagem">
-                <img src="./img/rose.jpg" alt="Blush Rosé">
+        <div class="filtros">
+            <button class="filtro ativo" onclick="filtrarProdutos('todos', this)">TODOS</button>
+            <button class="filtro" onclick="filtrarProdutos('po', this)">EM PÓ</button>
+            <button class="filtro" onclick="filtrarProdutos('cremoso', this)">CREMOSO</button>
+             <div class="pesquisa-produtos">
+                <input type="text" id="buscarProduto" placeholder="Buscar produtos..." oninput="buscarProdutos()">
+                <button type="button" onclick="buscarProdutos()">Buscar</button>
             </div>
-            <span class="numero"> 01 </span>
-            <span class="mais-vendido"> MAIS VENDIDO </span>
-            <h2> BLUSH ROSÉ </h2>
-            <p> Rosa suave • acabamento natural </p>
-            <strong> R$ 40,00 </strong>
-            <a href="detalhes.html?produto=rose" class="botao">VER PRODUTO</a>
-        </article>
+        </div>
 
-        <article class="produto" data-tipo="cremoso">
-            <div class="produto-imagem">
-                <img src="./img/pessego.jpg" alt="Blush Pêssego">
-            </div>
-            <span class="numero"> 02 </span>
-            <h2> BLUSH PÊSSEGO </h2>
-            <p> Tom quente • efeito saudável </p>
-            <strong> R$ 30,00 </strong>
-            <a href="detalhes.html?produto=pessego" class="botao"> VER PRODUTO </a>
-        </article>
+        <section class="produtos-lista">
 
-        <article class="produto" data-tipo="po">
-            <div class="produto-imagem">
-                <img src="./img/Berryy.jpg" alt="Blush Berry">
-            </div>
-            <span class="numero">03</span>
-            <h2>BLUSH BERRY</h2>
-            <p>Rosa intenso • toque marcante</p>
-            <strong>R$ 25,00</strong>
-            <a href="detalhes.html?produto=berry" class="botao">VER PRODUTO</a>
-        </article>
 
-    </section>
-</main>
+           
+        </section>
+    </main>
 
-<footer>
-    MEU BLUSH · um toque de cor, do seu jeito
-</footer>
+    <footer>
+        MEU BLUSH · um toque de cor, do seu jeito
+    </footer>
 
-<script src="script.js" defer></script>
+    <script src="script.js" defer></script>
 
 </body>
 </html>
