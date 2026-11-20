@@ -1,53 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Meu Blush | Produtos </title>
+    <title>Meu Blush | Produtos</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <header class="cabecalho">
-        <a href="index.html" class="logo"> MEU BLUSH </a>
-        <span class="sublogo"> BEAUTY • MAKEUP </span>
+<header class="site-header">
+    <div class="container nav">
+        <a class="brand" href="index.html">
+            <span class="brand-mark">♡</span>
+            <span>Meu<br>Blush</span>
+        </a>
 
-        <nav>
-            <a href="index.html"> Início </a>
-            <a href="produtos.html"> Produtos </a>
-            <a href="produtos.html"> Sobre Nós </a>
+        <nav class="nav-links">
+            <a href="index.html">Início</a>
+            <a class="active" href="produtos.html">Produtos</a>
+            <a href="sobre.html">Sobre Nós</a>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <main class="catalogo">
-        <p class="etiqueta"> NOSSA COLEÇÃO </p>
-        <h1> Escolha sua cor </h1>
-        <p> Três opções delicadas para completar sua make. </p>
+<main class="container">
 
-        <div class="filtros">
-            <button class="filtro ativo" onclick="filtrarProdutos('todos', this)">TODOS</button>
-            <button class="filtro" onclick="filtrarProdutos('po', this)">EM PÓ</button>
-            <button class="filtro" onclick="filtrarProdutos('cremoso', this)">CREMOSO</button>
-             <div class="pesquisa-produtos">
-                <input type="text" id="buscarProduto" placeholder="Buscar produtos..." oninput="buscarProdutos()">
-                <button type="button" onclick="buscarProdutos()">Buscar</button>
-            </div>
-        </div>
+    <section class="page-heading">
+        <span class="eyebrow">Nossa coleção</span>
+        <h1>Escolha sua cor</h1>
+        <p>Três opções delicadas para completar sua make.</p>
+    </section>
 
-        <section class="produtos-lista">
+    <form id="busca" class="filters">
+        <input
+            type="search"
+            name="nome"
+            id="nomeBusca"
+            placeholder="⌕ Buscar produtos..."
+            aria-label="Buscar produtos">
 
+        <button class="btn" type="submit">Buscar</button>
+    </form>
 
-           
-        </section>
-    </main>
+    <div class="category-filters">
+        <button class="filter-btn active" type="button" data-type="todos">
+            Todos
+        </button>
 
-    <footer>
-        MEU BLUSH · um toque de cor, do seu jeito
-    </footer>
+        <button class="filter-btn" type="button" data-type="po">
+            Em pó
+        </button>
 
-    <script src="script.js" defer></script>
+        <button class="filter-btn" type="button" data-type="cremoso">
+            Cremoso
+        </button>
+    </div>
 
+    <section class="product-grid" id="product-list"></section>
+
+    <p class="empty-message" id="empty-message" hidden>
+        Nenhum produto encontrado.
+    </p>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        ♡ Meu Blush — Um toque de cor, do seu jeito.
+    </div>
+</footer>
+<script src="./script.js"></script>
+
+<script>
+    const product_list = document.getElementById("product-list");
+    const busca = document.getElementById("busca");
+    const empty_message = document.getElementById("empty-message");
+
+    let categoriaAtual = "todos";
+
+    function mostrarProdutos() {
+        product_list.innerHTML = "";
+
+        const nome = busca.nome.value.toLowerCase().trim();
+
+        let encontrados = lista.filter(function(item) {
+            const combinaNome = item.nome.toLowerCase().includes(nome);
+
+            const combinaCategoria =
+                categoriaAtual === "todos" ||
+                item.categoria === categoriaAtual;
+
+            return combinaNome && combinaCategoria;
+        });
+
+        encontrados.forEach(function(item) {
+            product_list.append(item.card());
+        });
+
+        empty_message.hidden = encontrados.length > 0;
+    }
+
+    busca.addEventListener("submit", function(e) {
+        e.preventDefault();
+        mostrarProdutos();
+    });
+
+    busca.nome.addEventListener("input", mostrarProdutos);
+
+    document.querySelectorAll(".filter-btn").forEach(function(botao) {
+        botao.addEventListener("click", function() {
+            categoriaAtual = botao.dataset.type;
+
+            document.querySelectorAll(".filter-btn").forEach(function(item) {
+                item.classList.remove("active");
+            });
+
+            botao.classList.add("active");
+            mostrarProdutos();
+        });
+    });
+
+    window.addEventListener("load", mostrarProdutos);
+</script>
 </body>
 </html>
