@@ -8,47 +8,83 @@
 </head>
 <body>
 
-<header class="cabecalho">
-    <a href="index.html" class="logo">MEU BLUSH</a>
-    <span class="sublogo"> BEAUTY • MAKEUP </span>
-
-    <nav>
-        <a href="index.html"> Início </a>
-        <a href="produtos.html"> Produtos </a>
-        <a href="produtos.html"> Sobre Nós </a>
-    </nav>
+<header class="site-header">
+    <div class="container nav">
+        <a class="brand" href="index.html"><span class="brand-mark"> ♡ </span><span> Meu <br> Blush </span></a>
+        <nav class="nav-links">
+            <a class="active" href="index.html"> Início </a>
+            <a href="produtos.html"> Produtos </a>
+            <a href="sobre.html"> Sobre Nós </a>
+        </nav>
+    </div>
 </header>
 
 <main>
-    <section class="inicio">
-        <div class="inicio-texto">
-            <p class="etiqueta"> UM TOQUE DE COR </p>
-
-            <h1>Sua beleza,<br> seu tom de rosa. </h1>
-
-            <p> Blushes escolhidos para deixar sua rotina mais leve e colorida. </p>
-
-            <a href="produtos.html" class="botao">
-                CONHEÇA OS BLUSHES
-            </a>
+    <section class="container hero">
+        <div class="hero-copy">
+            <span class="eyebrow"> Um toque de cor </span>
+            <h1>Sua beleza,<br>seu tom de rosa.</h1>
+            <p> Blushes escolhidos para valorizar sua beleza e deixar sua maquiagem ainda mais especial. </p>
+             <a class="btn" href="produtos.html"> Conheça nossos blushes → </a>
         </div>
 
-        <div class="imagem-inicio">
-            <img src="./img/image.jpg"
-                 alt="Blush de maquiagem">
+        <div class="hero-image">
+            <img src="./img/destaque-blush.jpg" alt="Blush da coleção Meu Blush">
         </div>
     </section>
 
-    <section class="categorias">
-        <h2> Encontre seu favorito </h2>
+    <section class="container section">
+        <h2 class="section-title">Encontre seu favorito</h2>
+        <div class="benefits">
+            <article class="benefit">
+                <div class="benefit-icon">♡</div>
+                <h3>Em pó</h3>
+                <p>Um toque delicado de cor.</p>
+            </article>
 
-        <p> ENCONTRE A COR QUE COMBINA COM VOCÊ </p>
+            <article class="benefit">
+                <div class="benefit-icon">✿</div>
+                <h3>Cremoso</h3>
+                <p>Cor com efeito natural.</p>
+            </article>
+
+            <article class="benefit">
+                <div class="benefit-icon">♥</div>
+                <h3>Para você</h3>
+                <p>Escolha o tom que combina com seu estilo.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="container section">
+        <h2 class="section-title">Nossos queridinhos</h2>
+        <div class="product-grid" id="product-list"></div>
+        <p class="center">
+            <a class="btn" href="produtos.html">
+                Ver todos os produtos →
+            </a>
+        </p>
     </section>
 </main>
 
-<footer>
-    MEU BLUSH · um toque de cor, do seu jeito
+<footer class="site-footer">
+    <div class="container">
+        ♡ Meu Blush — Um toque de cor, do seu jeito.
+    </div>
 </footer>
+<script src="./script.js"></script>
 
+<script>
+    const product_list = document.getElementById("product-list");
+
+    window.addEventListener("load", function() {
+        product_list.innerHTML = "";
+
+        for (let i = 0; i < 3; i++) {
+            let item = lista[i];
+            product_list.append(item.card());
+        }
+    });
+</script>
 </body>
 </html>
