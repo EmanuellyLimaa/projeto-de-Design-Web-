@@ -1,86 +1,106 @@
-// iniciando informações do produto 
-class Produtos {
-    constructor(n, desc, prec, img, tom, acab, indi, i) {
+
+class Blush {
+    constructor(n, desc, tom, acabamento, indicacao, preco, img, categoria, i) {
         this.nome = n;
-        this.preco = prec;
         this.descricao = desc;
+        this.tom = tom;
+        this.acabamento = acabamento;
+        this.indicacao = indicacao;
+        this.preco = preco;
         this.imagem = img;
-        this.tom_produto = tom;
-        this.acamento = acab;
-        this.indicacao = indi;
+        this.categoria = categoria;
         this.id = i;
     }
 
-
     card() {
         let article = document.createElement("article");
-        article.classList.add("dog-card");
+        article.classList.add("product-card");
+
         article.innerHTML = `
-            <div class="produto-imagem">
-                <img src="./img/${this.imagem}" alt="${this.nome}">
+            <img src="./img/${this.imagem}" alt="${this.nome}">
+
+            <div class="product-card-body">
+                <div class="product-number">0${this.id}</div>
+
+                <h3>${this.nome}</h3>
+
+                <div class="product-meta">
+                    ${this.tom} • ${this.acabamento}
+                </div>
+
+                <strong class="product-price">${this.preco}</strong>
+
+                <a class="btn" href="detalhes.html?id=${this.id}">
+                    Ver produto →
+                </a>
             </div>
-
-            <span class="numero">0${this.id}</span>
-
-            <h2>${this.nome}</h2>
-
-            <p>${this.tom}</p>
-
-            <strong>${this.preco}</strong>
-
-            <a class="botao" href="detalhes.html?id=${this.id}"> VER PRODUTO </a> 
         `;
+
         return article;
     }
 
     detalhe() {
         return `
-            <div class="produto-detalhe">
-                <div class="detalhe-imagem">
-                    <img src="./img/${this.imagem}">
-                </div>
-                <div class="detalhe-informacoes">
-                    <h2>${this.nome}</h2>
-                    <strong>${this.preco}</strong>
-                    <h3>DESCRIÇÃO</h3>
-                    <p>${this.descricao}</p>
-                    <div class="caracteristicas">
-                        <span>${this.tom}</span>
-                        <span>${this.acabamento}</span>
-                        <span>${this.indicacao}</span>
-                    </div>
-                </div>
+            <div class="detail-photo">
+                <img src="./img/${this.imagem}" alt="${this.nome}">
             </div>
-    `
+
+            <div class="detail-info">
+                <span class="eyebrow">Detalhes do produto</span>
+
+                <h1>${this.nome}</h1>
+
+                <p class="detail-price">${this.preco}</p>
+
+                <p>${this.descricao}</p>
+
+                <ul class="detail-list">
+                    <li><strong>Tom:</strong> ${this.tom}</li>
+
+                    <li><strong>Acabamento:</strong> ${this.acabamento}</li>
+
+                    <li><strong>Indicação:</strong> ${this.indicacao}</li>
+                </ul>
+            </div>
+        `;
     }
 }
-// Cadastro dos produtos
 
-const b1 = new Blush("BLUSH ROSÉ",
+// Produtos da loja Meu Blush
+const b1 = new Blush(
+    "BLUSH ROSÉ",
     "Blush em tom rosado suave, ideal para deixar as bochechas com aparência saudável e delicada.",
-    "R$ 40,00",
     "TOM ROSA CLARO",
     "ACABAMENTO NATURAL",
     "IDEAL PARA O DIA A DIA",
-    "rose.jpg", 1
+    "R$ 40,00",
+    "rose.jpg",
+    "po",
+    1
 );
 
-const b2 = new Blush("BLUSH PÊSSEGO",
+const b2 = new Blush(
+    "BLUSH PÊSSEGO",
     "Blush em tom pêssego, perfeito para proporcionar uma aparência saudável e iluminada.",
-    "R$ 27,00",
     "TOM PÊSSEGO",
     "ACABAMENTO NATURAL",
     "IDEAL PARA UMA MAKE LEVE",
-    "pessego.jpg", 2
+    "R$ 27,00",
+    "pessego.jpg",
+    "cremoso",
+    2
 );
 
-const b3 = new Blush("BLUSH BERRY",
+const b3 = new Blush(
+    "BLUSH BERRY",
     "Blush em tom berry, ideal para uma maquiagem com um toque de cor mais intenso.",
-    "R$ 23,00",
     "TOM BERRY",
     "ACABAMENTO MARCANTE",
     "IDEAL PARA PRODUÇÕES ESPECIAIS",
-    "Berryy.jpg", 3
+    "R$ 23,00",
+    "Berryy.jpg",
+    "po",
+    3
 );
 
 // Lista de produtos
