@@ -5,79 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Blush | Detalhes</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
 
-<header class="cabecalho">
-    <div class="marca">
-        <a href="index.html" class="logo">MEU BLUSH</a>
-        <span class="sublogo">BEAUTY • MAKEUP</span>
-    </div>
+<header class="site-header">
+    <div class="container nav">
+        <a class="brand" href="index.html">
+            <span class="brand-mark">♡</span>
+            <span>Meu<br>Blush</span>
+        </a>
 
-    <nav>
-        <a href="index.html">Início</a>
-        <a href="produtos.html">Produtos</a>
-        <a href="produtos.html"> Sobre Nós </a
-    </nav>
+        <nav class="nav-links">
+            <a href="index.html">Início</a>
+            <a class="active" href="produtos.html">Produtos</a>
+            <a href="sobre.html">Sobre Nós</a>
+        </nav>
+    </div>
 </header>
 
-<main class="detalhes">
+<main class="container section">
 
-    <div class="detalhes-titulo">
-        <p class="etiqueta">DETALHES DO PRODUTO</p>
-        <h1>Um favorito para todos os dias.</h1>
-        <p>Conheça melhor o seu próximo blush.</p>
-    </div>
+    <a class="back-link" href="produtos.html">
+        ← Voltar aos produtos
+    </a>
 
-    <section class="produto-detalhe">
-
-        <div class="detalhe-imagem">
-            <img id="imagemProduto"
-                 src="./img/rose.jpg"
-                 alt="Blush selecionado">
-        </div>
-
-        <div class="detalhe-informacoes">
-
-            <h2 id="nomeProduto">BLUSH ROSÉ</h2>
-
-            <strong id="precoProduto">R$ 40,00</strong>
-
-            <h3>DESCRIÇÃO</h3>
-
-            <p id="descricaoProduto">
-                Blush em tom rosado suave, ideal para deixar
-                as bochechas com aparência saudável e delicada.
-            </p>
-
-            <h3>CARACTERÍSTICAS</h3>
-
-            <div class="caracteristicas">
-                <span id="tomProduto">TOM ROSA CLARO</span>
-
-                <span id="acabamentoProduto">
-                    ACABAMENTO NATURAL
-                </span>
-
-                <span id="indicacaoProduto">
-                    IDEAL PARA O DIA A DIA
-                </span>
-            </div>
-
-            <a href="produtos.html" class="botao voltar">
-                VOLTAR AOS PRODUTOS
-            </a>
-
-        </div>
-
-    </section>
+    <section class="detail-layout" id="product-details"></section>
 
 </main>
 
-<footer>
-    MEU BLUSH · UM TOQUE DE COR, DO SEU JEITO
+<footer class="site-footer">
+    <div class="container">
+        ♡ Meu Blush — Um toque de cor, do seu jeito.
+    </div>
 </footer>
+
+<script src="./script.js"></script>
+
+<script>
+    window.addEventListener("load", function() {
+        const product_details =
+            document.getElementById("product-details");
+
+        const parametros =
+            new URLSearchParams(window.location.search);
+
+        const id = Number(parametros.get("id"));
+
+        const item = lista.find(function(produto) {
+            return produto.id === id;
+        });
+
+        if (item) {
+            product_details.innerHTML = item.detalhe();
+        } else {
+            product_details.innerHTML =
+                "<p>Produto não encontrado. Volte ao catálogo e escolha um blush.</p>";
+        }
+    });
+</script>
 
 </body>
 </html>
